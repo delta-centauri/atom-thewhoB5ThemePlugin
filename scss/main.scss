@@ -1,0 +1,299 @@
+// The Who colours (from the Bootstrap 2 thewhoThemePlugin)
+$dt-red: #cc0000;
+$dt-red-light: #ea9999;
+$dt-red-less-light: #e57f7f;
+$dt-red-dark: #7a0000;
+$dt-blue: #3a48d6;
+$dt-blue-light: #c4c8f3;
+$dt-gray-light: #d9d9d9;
+
+$white: #fff;
+$black: #000;
+
+// Bootstrap 2 grays used by the old theme
+$bs2-gray-dark: #333;
+$bs2-gray: #555;
+$bs2-gray-light: #999;
+$bs2-gray-lighter: #eee;
+
+// Variable overrides (arDominionB5Plugin uses !default)
+$primary: $dt-red;
+$secondary: $bs2-gray-dark;
+$body-bg: #fffaf0;
+$font-size-base: 0.875rem;
+$link-color: $dt-red;
+$link-hover-color: $dt-red-dark;
+$link-hover-decoration: none;
+$headings-color: $dt-blue;
+$breadcrumb-divider-color: $dt-blue;
+$navbar-dark-color: $dt-gray-light;
+$navbar-dark-hover-color: $white;
+$navbar-dark-active-color: $white;
+$border-color: $dt-gray-light;
+
+@import "../../arDominionB5Plugin/scss/main.scss";
+
+// Background image, translucent content area
+
+html {
+  height: 100%;
+}
+
+body {
+  background: $body-bg url("../images/whogroup703.jpg") repeat-y center 48px;
+  background-size: cover;
+}
+
+#wrapper {
+  background-color: rgba($white, 0.85);
+  border: 1px solid $white;
+  border-top: none;
+  padding-bottom: $spacer;
+}
+
+#content {
+  box-shadow: none;
+}
+
+.form-required {
+  color: $dt-blue;
+}
+
+// Header
+
+#top-bar {
+  background-color: $black;
+}
+
+#logo {
+  color: $white;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+#site-slogan {
+  background-color: $white;
+  color: $bs2-gray-dark;
+  border-bottom: 1px solid $bs2-gray-lighter;
+  box-shadow: 0 2px 5px rgba($black, 0.1);
+}
+
+// Header dropdowns: light on dark
+#top-bar .dropdown-menu {
+  background-color: $bs2-gray-dark;
+  color: $dt-gray-light;
+  border-color: $bs2-gray-dark;
+
+  .dropdown-header,
+  h2,
+  h3,
+  h4 {
+    color: $dt-blue-light;
+  }
+
+  .dropdown-item,
+  .dropdown-item-text,
+  label,
+  p {
+    color: $dt-gray-light;
+  }
+
+  .dropdown-item:hover,
+  .dropdown-item:focus,
+  .dropdown-item.active,
+  .dropdown-item:active {
+    color: $white;
+    background-color: transparent;
+  }
+
+  .dropdown-item.active {
+    font-weight: bold;
+  }
+
+  .dropdown-divider {
+    border-color: $bs2-gray;
+  }
+
+  // Login form submit
+  button[type="submit"] {
+    color: $white;
+    background-color: $bs2-gray-light;
+    border-color: transparent;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white;
+      background-color: $bs2-gray;
+    }
+  }
+}
+
+#search-box input {
+  background-color: $bs2-gray-lighter;
+  color: $bs2-gray-dark;
+}
+
+// Homepage
+
+body.staticpage.home {
+  #wrapper {
+    color: $white;
+    background-color: rgba($black, 0.5);
+    border-color: $black;
+
+    a {
+      color: $dt-red-light;
+
+      &:hover {
+        color: $dt-red-less-light;
+      }
+    }
+
+    h1,
+    h3 {
+      color: $dt-blue-light;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    #wrapper {
+      width: 50%;
+    }
+  }
+}
+
+#browse_by_homepage {
+  padding: 20px 0 10px;
+  margin-bottom: $spacer;
+  text-align: center;
+  border-bottom: 1px solid gray;
+  font-size: 16px;
+}
+
+.page h3 {
+  margin-top: 30px;
+}
+
+// Buttons (colours from the old .c-btn and .btn-* overrides)
+
+@mixin thewho-btn($bg, $hover-bg, $hover-color: $white) {
+  color: $white;
+  background-color: $bg;
+  border-color: $bg;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    color: $hover-color;
+    background-color: $hover-bg;
+    border-color: $hover-bg;
+  }
+}
+
+// Action bar buttons: Save/Create, Delete, Cancel/Edit
+.atom-btn-outline-success {
+  @include thewho-btn($dt-blue, $bs2-gray-lighter, $bs2-gray-dark);
+}
+
+.atom-btn-outline-danger {
+  @include thewho-btn($bs2-gray-light, $bs2-gray-lighter, $bs2-gray-dark);
+}
+
+.atom-btn-outline-light {
+  &:hover,
+  &:focus {
+    color: $bs2-gray-dark;
+    background-color: $bs2-gray-lighter;
+    border-color: $bs2-gray-lighter;
+  }
+}
+
+.btn-primary,
+.btn-info {
+  @include thewho-btn($bs2-gray-light, #7b7b7b);
+}
+
+.btn-warning {
+  @include thewho-btn(#d99c47, #b27f3a);
+}
+
+.btn-danger {
+  @include thewho-btn(#da4f49, #ae413c);
+}
+
+.btn-success {
+  @include thewho-btn(#da4f49, #da4f49);
+}
+
+.btn-dark {
+  @include thewho-btn($bs2-gray-dark, $black);
+}
+
+// Browse menu button and navbar toggler
+.atom-btn-secondary {
+  &:hover,
+  &:focus {
+    background-color: $bs2-gray;
+    border-color: $bs2-gray;
+  }
+}
+
+// Clipboard button: icon gray, blue when added
+.atom-btn-white.clipboard {
+  color: $dt-red;
+
+  &:hover,
+  &:focus {
+    color: $dt-red-dark;
+
+    i {
+      color: $dt-red-dark;
+    }
+  }
+
+  &.active-primary.active,
+  &.active-primary.active:hover {
+    background-color: $dt-blue;
+    border-color: $dt-blue;
+  }
+}
+
+// Treeview
+
+.jstree-anchor,
+.jstree-anchor:link,
+.jstree-anchor:visited,
+.jstree-anchor:hover,
+.jstree-anchor:active {
+  color: $bs2-gray-light !important;
+}
+
+.jstree-default .jstree-clicked {
+  background-color: $dt-gray-light !important;
+  font-weight: bold;
+  color: $bs2-gray-dark !important;
+}
+
+.jstree-default .jstree-hovered {
+  background-color: $dt-gray-light !important;
+  color: $black !important;
+}
+
+// Footer
+
+footer {
+  background-color: $black;
+  color: $bs2-gray-light;
+  text-align: center;
+  font-size: 12px;
+  padding: 10px;
+
+  a,
+  a:hover,
+  a:visited {
+    color: $bs2-gray-light;
+  }
+}
